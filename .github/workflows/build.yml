@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
   build:
@@ -15,15 +12,20 @@ jobs:
       - name: 检出代码
         uses: actions/checkout@v3
 
-      - name: 设置 Python & Node.js 环境
+      - name: 设置 Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: 设置 Python
         uses: actions/setup-python@v4
         with:
           python-version: "3.9"
 
-      - name: 安装依赖
+      - name: 安装 Node.js 依赖
         run: npm install
 
-      - name: 运行 Python 解析脚本
+      - name: 运行 Python 解析剧集
         run: python scripts/generate.py
 
       - name: 运行 Node.js 生成网页
