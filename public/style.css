@@ -1,28 +1,87 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f8f8f8;
+    background-color: #222;
+    color: #fff;
     text-align: center;
+    margin: 0;
+    padding: 20px;
 }
+
 h1 {
-    color: #333;
+    color: #ffcc00;
 }
+
 .movies {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    gap: 20px;
 }
-.movie {
-    margin: 20px;
-    padding: 10px;
-    background: white;
+
+.movie-card {
+    background: #333;
+    padding: 15px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+    width: 200px;
 }
-.movie img {
-    width: 150px;
-    height: 220px;
-    border-radius: 4px;
+
+.movie-card img {
+    width: 100%;
+    border-radius: 8px;
 }
-.movie h2 {
+
+.movie-card h2 {
     font-size: 16px;
+    margin-top: 10px;
+}
+
+.cover {
+    width: 60%;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.episode-list {
+    list-style: none;
+    padding: 0;
+}
+
+.episode-list li {
+    background: #444;
+    margin: 10px auto;
+    padding: 10px;
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 6px;
+}
+
+.play-button {
+    background: #ffcc00;
+    color: #222;
+    padding: 5px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.play-button:hover {
+    background: #ffaa00;
+}
+
+.back-button {
+    display: inline-block;
+    margin: 20px;
+    padding: 8px 15px;
+    background: #ff4444;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.back-button:hover {
+    background: #cc0000;
 }
