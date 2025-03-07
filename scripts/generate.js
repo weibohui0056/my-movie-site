@@ -18,10 +18,10 @@ const indexContent = `
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>影视大全</h1>
+    <h1>🎬 影视大全</h1>
     <div class="movies">
         ${movies.map(movie => `
-            <div class="movie">
+            <div class="movie-card">
                 <a href="${movie.id}.html">
                     <img src="${movie.cover}" alt="${movie.title}">
                     <h2>${movie.title}</h2>
@@ -46,19 +46,23 @@ movies.forEach(movie => {
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
+        <a href="index.html" class="back-button">← 返回首页</a>
         <h1>${movie.title}</h1>
-        <img src="${movie.cover}" alt="${movie.title}">
+        <img src="${movie.cover}" class="cover" alt="${movie.title}">
         <p>${movie.description}</p>
-        <ul>
+        <h2>📺 剧集列表</h2>
+        <ul class="episode-list">
             ${movie.episodes.map(episode => `
-                <li><a href="${episode.url}" target="_blank">${episode.name}</a></li>
+                <li>
+                    <span>${episode.name}</span>
+                    <a href="${episode.url}" target="_blank" class="play-button">▶️ 播放</a>
+                </li>
             `).join('')}
         </ul>
-        <a href="index.html">返回首页</a>
     </body>
     </html>
     `;
     fs.writeFileSync(path.join(outputDir, `${movie.id}.html`), movieContent);
 });
 
-console.log("网页生成完成！");
+console.log("✨ 网页生成完成！");
