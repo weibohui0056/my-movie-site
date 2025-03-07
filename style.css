@@ -1,68 +1,87 @@
-const fs = require("fs");
-const path = require("path");
+body {
+    font-family: Arial, sans-serif;
+    background-color: #222;
+    color: #fff;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
 
-const movies = JSON.parse(fs.readFileSync("./data/movies.json", "utf-8"));
-const outputDir = "./public";
+h1 {
+    color: #ffcc00;
+}
 
-// 确保输出目录存在
-if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir, { recursive: true });
+.movies {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
 
-// 生成首页
-const indexContent = `
-<!DOCTYPE html>
-<html lang="zh">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>影视大全</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <h1>🎬 影视大全</h1>
-    <div class="movies">
-        ${movies.map(movie => `
-            <div class="movie-card">
-                <a href="${movie.id}.html">
-                    <img src="${movie.cover}" alt="${movie.title}">
-                    <h2>${movie.title}</h2>
-                </a>
-            </div>
-        `).join('')}
-    </div>
-</body>
-</html>
-`;
-fs.writeFileSync(path.join(outputDir, "index.html"), indexContent);
+.movie-card {
+    background: #333;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+    width: 200px;
+}
 
-// 生成详情页
-movies.forEach(movie => {
-    const movieContent = `
-    <!DOCTYPE html>
-    <html lang="zh">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>${movie.title}</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <a href="index.html" class="back-button">← 返回首页</a>
-        <h1>${movie.title}</h1>
-        <img src="${movie.cover}" class="cover" alt="${movie.title}">
-        <p>${movie.description}</p>
-        <h2>📺 剧集列表</h2>
-        <ul class="episode-list">
-            ${movie.episodes.map(episode => `
-                <li>
-                    <span>${episode.name}</span>
-                    <a href="${episode.url}" target="_blank" class="play-button">▶️ 播放</a>
-                </li>
-            `).join('')}
-        </ul>
-    </body>
-    </html>
-    `;
-    fs.writeFileSync(path.join(outputDir, `${movie.id}.html`), movieContent);
-});
+.movie-card img {
+    width: 100%;
+    border-radius: 8px;
+}
 
-console.log("✨ 网页生成完成！");
+.movie-card h2 {
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.cover {
+    width: 60%;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.episode-list {
+    list-style: none;
+    padding: 0;
+}
+
+.episode-list li {
+    background: #444;
+    margin: 10px auto;
+    padding: 10px;
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 6px;
+}
+
+.play-button {
+    background: #ffcc00;
+    color: #222;
+    padding: 5px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.play-button:hover {
+    background: #ffaa00;
+}
+
+.back-button {
+    display: inline-block;
+    margin: 20px;
+    padding: 8px 15px;
+    background: #ff4444;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.back-button:hover {
+    background: #cc0000;
+}
