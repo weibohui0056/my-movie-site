@@ -1,0 +1,28 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    text-align: center;
+}
+h1 {
+    color: #333;
+}
+.movies {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.movie {
+    margin: 20px;
+    padding: 10px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.movie img {
+    width: 150px;
+    height: 220px;
+    border-radius: 4px;
+}
+.movie h2 {
+    font-size: 16px;
+}
