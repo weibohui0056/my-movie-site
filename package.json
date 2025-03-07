@@ -1,0 +1,11 @@
+{
+  "name": "my-movie-site",
+  "version": "1.0.0",
+  "description": "一个影视剧集展示网站",
+  "main": "scripts/generate.js",
+  "scripts": {
+    "generate": "node scripts/generate.js"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
